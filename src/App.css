@@ -1,38 +1,367 @@
-.App {
+body {
+  margin: 0;
+  /* font-family: Arial, Helvetica, sans-serif; */
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji",
+    "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+}
+
+body::before {
+  content: "";
+  background-image: url("./assets/img/background.png");
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  bottom: 0px;
+  left: 0px;
+  z-index: -4;
+  opacity: 0.75;
+}
+
+.topnav {
+  overflow: hidden;
+  background-color: #333;
+}
+
+.topnav a {
+  float: left;
+  color: #f2f2f2;
   text-align: center;
+  padding: 14px 13px;
+  text-decoration: none;
+  font-size: 17px;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.topnav a:hover {
+  background-color: #ddd;
+  color: black;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+.topnav a.active {
+  background-color: #04aa6d;
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.contacts {
+  /* justify-content: center; */
+  display: flex;
+  flex-wrap: wrap;
 }
 
-@keyframes App-logo-spin {
+.contact {
+  flex: 1 0 19%;
+  height: 10em;
+  margin: 2px;
+  padding: 6px 8px 30px 2px;
+  border-radius: 5px;
+  color: white;
+  overflow: hidden;
+}
+
+.contact:hover {
+  cursor: pointer;
+}
+
+.contact-representation {
+  text-align: center;
+  font-size: 6rem;
+  margin-top: 18px;
+  margin-left: 30px;
+  margin-bottom: 0;
+}
+
+.contact-actions {
+  float: right;
+}
+.contact-actions i {
+  color: white;
+}
+
+.contact-delete {
+  float: right;
+  margin-top: -40px;
+  margin-right: 4px;
+}
+.contact-dot {
+  display: inline;
+}
+.contact-dot:after {
+  content: "\2807";
+  font-size: 200%;
+}
+.contact-name {
+  margin-top: 0;
+  padding: 4px;
+}
+
+.details {
+  display: none;
+  order: -1; /* Sit on top */
+  position: absolute;
+  padding-top: 100px; /* Location of the box */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  flex-basis: 100%;
+  min-height: 800px;
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgba(80, 77, 77, 0.61); /* Fallback color */
+  /* font-family: Arial, Helvetica, sans-serif; */
+}
+
+.details-content {
+  background-color: #fefefe;
+  margin: auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%;
+  border-radius: 5px;
+}
+
+.close {
+  color: #aaaaaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.search-form {
+  margin: 2%;
+  text-align: center;
+  animation: form-animation 1.5s;
+}
+
+.search-form .input-search {
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid #04aa6d;
+  color: #04aa6d;
+  font-size: 1.8rem;
+  text-align: center;
+  padding: 1%;
+  border-radius: 8px;
+}
+
+.search-form input:focus {
+  outline: none;
+  background-color: #333;
+}
+
+.search-form .search-button {
+  font-size: 2rem;
+  border: none;
+  background-color: transparent;
+  color: #04aa6d;
+  margin-left: -4%;
+}
+
+@keyframes form-animation {
   from {
-    transform: rotate(0deg);
+    width: 50%;
+    margin: 30%;
   }
   to {
-    transform: rotate(360deg);
+    width: 96%;
+    margin: 2%;
+  }
+}
+
+.input-addContact {
+  background: transparent;
+  text-align: center;
+  border: none;
+  border-bottom: 1px solid #04aa6d;
+  color: #04aa6d;
+  font-size: 1.7rem;
+  margin: 3% 6%;
+  padding: 1%;
+  border-radius: 8px;
+}
+.submit-button {
+  background-color: transparent;
+  color: #04aa6d;
+  padding: 14px 20px;
+  border: 1px solid #04aa6d;
+  font-size: 1rem;
+  transition: color 0.2s ease-out 0.2s;
+  font-family: verdana;
+  cursor: pointer;
+  overflow: hidden;
+}
+.submit-button:hover {
+  color: #ffffff;
+  background-color: #04aa6d;
+  border-radius: 4px;
+}
+
+.title {
+  font-size: 3rem;
+  font-weight: 300;
+  line-height: 1.2;
+  text-align: center;
+  color: #04aa6d;
+  margin-bottom: 2px;
+}
+
+.content-about {
+  margin: 1%;
+  border-top: 1px solid #04aa6d;
+  padding: 15px;
+  border-radius: 8px;
+  border-bottom: 1px solid #04aa6d;
+  text-align: center;
+  height: 70vh;
+}
+
+.about-content-text {
+  margin: auto;
+  text-align: center;
+  width: 50%;
+}
+
+.error {
+  font-weight: 300;
+  line-height: 1.2;
+  text-align: center;
+  color: red;
+  margin-bottom: -48px;
+}
+
+.circle-graphics {
+  display: flex;
+  justify-content: space-around;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.circle-graphic i {
+  font-size: 2rem;
+  margin-top: 35%;
+  color: #fff;
+  animation: myanimation 14s infinite;
+}
+
+.circle:hover {
+  opacity: 1;
+  border: 2px solid #04aa6d;
+  transform: scale(1.1, 1.1) rotate(360deg);
+}
+.circle {
+  background-color: #000;
+  border-radius: 50%;
+  width: 100px;
+  height: 100px;
+  margin: auto;
+  opacity: 0.9s;
+  transition: all 0.5s ease;
+}
+
+.circle-content {
+  font-size: 1.4rem;
+  color: #04aa6d;
+}
+
+.circle-graphic {
+  border-radius: 100%;
+  flex: 0 0 33.333333%;
+}
+
+@keyframes myanimation {
+  0% {
+    color: #04aa6d;
+  }
+  20% {
+    color: yellow;
+  }
+  40% {
+    color: cyan;
+  }
+  60% {
+    color: red;
+  }
+  80% {
+    color: #d30c7b;
+  }
+  100% {
+    color: #04aa6d;
+  }
+}
+@media only screen and (max-width: 850px) {
+  .error {
+    margin-bottom: -20px;
+  }
+  .circle-graphic i {
+    opacity: 1;
+  }
+  .circle-graphic {
+    flex: 0 0 50%;
+  }
+  .search-form .search-button {
+    font-size: 1.4rem;
+    margin-left: -4.5%;
+  }
+  .search-form {
+    margin: 6% 0;
+    animation: none;
+  }
+
+  .search-form .input-search {
+    font-size: 1.5rem;
+  }
+
+  .contact {
+    flex: 1 0 45%;
+  }
+  .input-addContact {
+    border-radius: 4px;
+    font-size: 1.6rem;
+    margin: 6% 2%;
+  }
+  .title {
+    font-size: 3rem;
+  }
+  .content-about {
+    height: 140vh;
+  }
+}
+
+@media only screen and (max-width: 450px) {
+  .search-form .search-button {
+    font-size: 1.4rem;
+    margin-left: -10%;
+  }
+}
+
+@media only screen and (max-width: 330px) {
+  .search-form .search-button {
+    display: none;
+  }
+  .contact-delete {
+    margin-right: 0px;
+  }
+  .input-addContact {
+    border-radius: 5px;
+    font-size: 1.5rem;
+    margin: 6% 2%;
+  }
+  .content-about {
+    height: 150vh;
+  }
+}
+
+@media only screen and (max-width: 280px) {
+  .search-form .input-search {
+    font-size: 1.3rem;
+  }
+  .contact-delete {
+    margin-top: -44px;
   }
 }
