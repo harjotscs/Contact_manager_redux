@@ -72,7 +72,7 @@ const Header = (props) => {
             // console.log(window.location.pathname);
             window.location.pathname === "/"
               ? introJs().start()
-              : setTimeout(() => introJs().start(), 100);
+              : setTimeout(() => introJs().start(), 200);
           }}
           data-title="Take Demo Anytime"
           data-intro="Click here to take demo anytime"
