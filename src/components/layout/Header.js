@@ -2,12 +2,14 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import introJs from "intro.js";
 import "intro.js/introjs.css";
+import { connect } from "react-redux";
 
 const Header = (props) => {
   const [status, setStatus] = useState({
     currentActive: 1,
     allObjects: [{ id: 1 }, { id: 2 }, { id: 3 }, { id: 4 }],
   });
+
   const handleClick = (index) => {
     setStatus({
       ...status,
@@ -19,6 +21,15 @@ const Header = (props) => {
     if (status.currentActive === index) return "active";
     else return "";
   };
+
+  const handleDemoClick = () => {
+    if (props.isLoading) {
+      return;
+    } else if (props.isLoading === false && window.location.pathname === "/") {
+      introJs().start();
+    }
+  };
+
   return (
     <header>
       <div className="topnav">
@@ -68,12 +79,7 @@ const Header = (props) => {
         </Link>
         <Link
           to="/"
-          onClick={() => {
-            // console.log(window.location.pathname);
-            window.location.pathname === "/"
-              ? introJs().start()
-              : setTimeout(() => introJs().start(), 200);
-          }}
+          onClick={handleDemoClick}
           data-title="Take Demo Anytime"
           data-intro="Click here to take demo anytime"
           data-step={7}
@@ -86,4 +92,10 @@ const Header = (props) => {
   );
 };
 
-export default Header;
+const mapStateToProps = (state) => {
+  return {
+    isLoading: state.contacts.isLoading,
+  };
+};
+
+export default connect(mapStateToProps, null)(Header);
