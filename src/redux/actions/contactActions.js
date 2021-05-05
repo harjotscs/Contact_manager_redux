@@ -62,6 +62,7 @@ export const deleteContact = (id) => async (dispatch) => {
     type: DELETE_CONTACT,
     payload: res.data,
   });
+  return true;
 };
 
 export const getContact = (id) => async (dispatch) => {

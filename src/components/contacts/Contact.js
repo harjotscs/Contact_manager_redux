@@ -55,6 +55,8 @@ const Contact = (props) => {
     generateValidColor();
   }
   const [isExpanded, setExpanded] = useState(false);
+  const [deleting, setDeleting] = useState(false);
+
   window.onclick = function (event) {
     event.target.className === "details" && setExpanded(!isExpanded);
   };
@@ -74,6 +76,17 @@ const Contact = (props) => {
   } = props;
   return (
     <React.Fragment>
+      <div
+        style={{ display: deleting ? "block" : "none" }}
+        className="sk-chase"
+      >
+        <div className="sk-chase-dot"></div>
+        <div className="sk-chase-dot"></div>
+        <div className="sk-chase-dot"></div>
+        <div className="sk-chase-dot"></div>
+        <div className="sk-chase-dot"></div>
+        <div className="sk-chase-dot"></div>
+      </div>
       <div
         className="contact"
         onClick={(event) => {
@@ -123,7 +136,8 @@ const Contact = (props) => {
             data-intro={dataIntroDelete}
             data-step={4}
             data-disable-interaction={true}
-            onClick={() => {
+            onClick={async () => {
+              setDeleting(true);
               deleteContact(_id);
             }}
           ></i>
