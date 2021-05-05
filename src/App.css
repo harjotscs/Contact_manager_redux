@@ -348,7 +348,7 @@ body::before {
   }
 }
 
-@media only screen and (max-width: 330px) {
+@media only screen and (max-width: 380px) {
   body::before {
     bottom: -85%;
   }
