@@ -23,7 +23,7 @@ const Search = (props) => {
         placeholder="Enter Contact Name"
         handleChange={handleChange}
         dataTitle="Search Contact"
-        dataIntro="Enter contact name to search a contact"
+        dataIntro="Enter name in this box to quick search your contacts"
         data-step={5}
         name="name"
       />

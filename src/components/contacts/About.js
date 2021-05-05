@@ -37,6 +37,7 @@ const About = () => {
             <p className="circle-content">Colourful Contacts</p>
           </div>
         </div>
+        <br />
         <p className="about-content-text">
           A MERN Stack Contact Manager Web App built without any CSS
           Framework/dependency. Hover on Any icon above to see amazing Animation
