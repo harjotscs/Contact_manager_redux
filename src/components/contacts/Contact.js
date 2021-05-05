@@ -55,9 +55,9 @@ const Contact = (props) => {
     generateValidColor();
   }
   const [isExpanded, setExpanded] = useState(false);
-  // window.onclick = function (event) {
-  //   event.target.className === "details" && setExpanded(!isExpanded);
-  // };
+  window.onclick = function (event) {
+    event.target.className === "details" && setExpanded(!isExpanded);
+  };
 
   const {
     _id,
@@ -76,7 +76,8 @@ const Contact = (props) => {
     <React.Fragment>
       <div
         className="contact"
-        onClick={() => {
+        onClick={(event) => {
+          if (event.target.className === "fa fa-trash") return;
           setExpanded(!isExpanded);
           window.scrollTo(0, 0);
         }}
